@@ -6,12 +6,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 public class App {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext= new ClassPathXmlApplicationContext("config.xml");
 		StudentDao studentDao = applicationContext.getBean("StudentDaoImplObj", StudentDaoImpl.class);
 		//insert
-		Student s = new Student(2,"Paul","Delhi");
+		Student s = new Student(8,"Mala","Chennai");
 		int n = studentDao.insert(s);
 		System.out.println("Number of rows inserted :"+n);
 
@@ -23,6 +25,17 @@ public class App {
 		//Delete
 		int n2 = studentDao.deleteDataById(4);
 		System.out.println("Number of rows deleted :"+n2);
+
+		//get Student By id
+		Student student = studentDao.getStudentById(1);
+		System.out.println("Student details "+student.toString());
+
+		//get all the students list
+		List<Student> studentList = studentDao.getAllStudents();
+		for (Student student1 : studentList)
+		{
+			System.out.println(student1.toString());
+		}
 	}
 
 }

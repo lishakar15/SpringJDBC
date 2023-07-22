@@ -1,5 +1,6 @@
 package com.additi.Entities;
 
+
 public class Student {
     private int id;
     private String name;
