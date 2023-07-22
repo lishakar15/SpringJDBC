@@ -46,6 +46,22 @@ public class StudentDaoImpl implements StudentDao {
         return students;
     }
 
+    @Override
+    public List<String> getAllStudentCities() {
+        String sql = "Select city from student";
+        //Implementing RowMapper Interface with Anonymous class implementation
+        RowMapper<String> rowMapper = new RowMapper<String>() {
+            @Override
+            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                String city = rs.getString(1); //only String data being returned
+                return city;
+            }
+        };
+        List<String> citList = this.jdbcTemplate.query(sql,rowMapper);
+
+        return citList;
+    }
+
     /**
      * Getter method
      * @return

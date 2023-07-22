@@ -13,9 +13,9 @@ public class App {
 		ApplicationContext applicationContext= new ClassPathXmlApplicationContext("config.xml");
 		StudentDao studentDao = applicationContext.getBean("StudentDaoImplObj", StudentDaoImpl.class);
 		//insert
-		Student s = new Student(8,"Mala","Chennai");
-		int n = studentDao.insert(s);
-		System.out.println("Number of rows inserted :"+n);
+		Student s = new Student(11,"Roma","Hydrabad");
+		//int n = studentDao.insert(s);
+		//System.out.println("Number of rows inserted :"+n);
 
 		//update
 		Student s1 = new Student(3,"Raja","Kerala");
@@ -35,6 +35,13 @@ public class App {
 		for (Student student1 : studentList)
 		{
 			System.out.println(student1.toString());
+		}
+
+		//fetch all students cities as a list
+		List<String> citList = studentDao.getAllStudentCities();
+		for (String city : citList)
+		{
+			System.out.println(city);
 		}
 	}
 

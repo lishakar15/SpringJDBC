@@ -15,4 +15,6 @@ public interface StudentDao {
 
     public List<Student> getAllStudents();
 
+    public List<String> getAllStudentCities();
+
 }
