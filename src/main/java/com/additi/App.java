@@ -10,9 +10,19 @@ public class App {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext= new ClassPathXmlApplicationContext("config.xml");
 		StudentDao studentDao = applicationContext.getBean("StudentDaoImplObj", StudentDaoImpl.class);
-		Student s = new Student(3,"Mano","Delhi");
+		//insert
+		Student s = new Student(2,"Paul","Delhi");
 		int n = studentDao.insert(s);
-		System.out.println("Number of rows insertedd :"+n);
+		System.out.println("Number of rows inserted :"+n);
+
+		//update
+		Student s1 = new Student(3,"Raja","Kerala");
+		int n1 = studentDao.updateDataById(s1);
+		System.out.println("Number of rows updated :"+n1);
+		
+		//Delete
+		int n2 = studentDao.deleteDataById(4);
+		System.out.println("Number of rows deleted :"+n2);
 	}
 
 }
