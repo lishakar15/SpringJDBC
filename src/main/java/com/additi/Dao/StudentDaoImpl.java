@@ -30,7 +30,6 @@ public class StudentDaoImpl implements StudentDao {
         return r;
     }
 
-    @Override
     public Student getStudentById(int id) {
         String query = "select * from student where id =?";
         RowMapper<Student> rowMapper = new StudentRowMapperImpl();
@@ -38,7 +37,6 @@ public class StudentDaoImpl implements StudentDao {
         return s;
     }
 
-    @Override
     public List<Student> getAllStudents() {
         String sql = "Select * from student";
         RowMapper<Student> rowMapper = new StudentRowMapperImpl();
@@ -46,12 +44,10 @@ public class StudentDaoImpl implements StudentDao {
         return students;
     }
 
-    @Override
     public List<String> getAllStudentCities() {
         String sql = "Select city from student";
         //Implementing RowMapper Interface with Anonymous class implementation
         RowMapper<String> rowMapper = new RowMapper<String>() {
-            @Override
             public String mapRow(ResultSet rs, int rowNum) throws SQLException {
                 String city = rs.getString(1); //only String data being returned
                 return city;
